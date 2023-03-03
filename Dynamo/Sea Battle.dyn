@@ -1,0 +1,223 @@
+{
+  "Uuid": "62a2c6db-c89a-40e2-907f-12cc8617eef8",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "Minesweeper",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "main.py",
+      "Id": "aa61236618af45dd94daa1122d33580c",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "761a1222c5eb40c487370305280c5398",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Создание строки."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.FileObject, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "71bbca7426ba454588c6d4ee91bb86e6",
+      "Inputs": [
+        {
+          "Id": "97fc5e091f2642d0aea614530de1e717",
+          "Name": "path",
+          "Description": "Путь к файлу.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "301beca1e52f4c0ba820e9434e5ee0c9",
+          "Name": "file",
+          "Description": "Файловый объект",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Создание нового объекта на основе пути."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.IO.FileSystem.ReadText@var",
+      "Id": "7a03c236f68d4611ac97fa4bbff10dd2",
+      "Inputs": [
+        {
+          "Id": "5f6c39e0e3d5485aa746f9bd2816624f",
+          "Name": "file",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f68b1ed36c264be1a8e8b48269a043a5",
+          "Name": "str",
+          "Description": "Contents of the text file.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Reads a text file and returns the contents as a string.\n\nFileSystem.ReadText (file: var): string"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonStringNode, PythonNodeModels",
+      "VariableInputPorts": true,
+      "NodeType": "ExtensionNode",
+      "Id": "c6d3120e3f50458cba094d024be33c59",
+      "Inputs": [
+        {
+          "Id": "42c62459254c42a78be5d013caec6783",
+          "Name": "script",
+          "Description": "Сценарий Python для запуска.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "34441fcec706464888b9ce099b735c28",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "4a10061945fb43a88dacd213a421c487",
+          "Name": "OUT",
+          "Description": "Результат сценария Python",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Выполнение сценария IronPython из строки."
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "761a1222c5eb40c487370305280c5398",
+      "End": "97fc5e091f2642d0aea614530de1e717",
+      "Id": "ff756003180449c9b9634e4aa310dfad"
+    },
+    {
+      "Start": "301beca1e52f4c0ba820e9434e5ee0c9",
+      "End": "5f6c39e0e3d5485aa746f9bd2816624f",
+      "Id": "626328544b334bae869bb94207b87ae7"
+    },
+    {
+      "Start": "301beca1e52f4c0ba820e9434e5ee0c9",
+      "End": "34441fcec706464888b9ce099b735c28",
+      "Id": "9dabdc6d3e5c4a6b8675fc59da962c77"
+    },
+    {
+      "Start": "f68b1ed36c264be1a8e8b48269a043a5",
+      "End": "42c62459254c42a78be5d013caec6783",
+      "Id": "8449ecc7209640689134ce8416edf191"
+    }
+  ],
+  "Dependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.0.4.12684",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "String",
+        "Id": "aa61236618af45dd94daa1122d33580c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 121.00000000000006,
+        "Y": 253.23442136498511
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File From Path",
+        "Id": "71bbca7426ba454588c6d4ee91bb86e6",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 248.686943620178,
+        "Y": 251.72106824925817
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "FileSystem.ReadText",
+        "Id": "7a03c236f68d4611ac97fa4bbff10dd2",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 416.5,
+        "Y": 186.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script From String",
+        "Id": "c6d3120e3f50458cba094d024be33c59",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 644.77940628450324,
+        "Y": 243.2823736435536
+      }
+    ],
+    "Annotations": [],
+    "X": -10.70870698365502,
+    "Y": 65.8427911020623,
+    "Zoom": 0.78436932804482706
+  }
+}
